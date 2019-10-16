@@ -28,10 +28,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/task', function (Request $request) {
         // 驗證輸入
         $validator = Validator::make($request->all() , [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255',       //驗證規則
         ]);
 
-        if ($validator->fails()) {
+        if ($validator->fails()) {      //驗證失敗的處理
             return redirect('/')
                 ->withInput()
                 ->withErrors($validator);
